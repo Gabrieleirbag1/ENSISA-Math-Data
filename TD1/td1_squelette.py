@@ -11,7 +11,22 @@ from my_descent_td1 import GradientDescent
 
 
 ### EXERCICE 5
+def gradient_ex_5(x):
+    return x**2 + 1
 
+ex5_a = GradientDescent(gradient_ex_5, 0.2, 10)
+image = ex5_a.descent(2)
+print(image)
+
+ex5_b = GradientDescent(gradient_ex_5, 0.01, 1000)
+ex5_b.descent(-1.5)
+
+ex5_c1 = GradientDescent(gradient_ex_5, 0.9, 10)
+ex5_c1.descent(2)
+ex5_c2 = GradientDescent(gradient_ex_5, 1.1, 10)
+ex5_c2.descent(2)
+ex5_c3 = GradientDescent(gradient_ex_5, 0.05, 10)
+ex5_c3.descent(2)
 
 ### EXERCICE 6
 

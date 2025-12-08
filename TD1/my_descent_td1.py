@@ -11,7 +11,7 @@ Création de la classe GradientDescent utilisée durant l'intégralité de ce co
 
 class GradientDescent:
     
-    def __init__(self, gradient, learning_rate, max_iterations):
+    def __init__(self, gradient, learning_rate = 0.01, max_iterations = 1000):
         
         """
         Initialise l'objet GradientDescent avec les paramètres nécessaires.
@@ -37,8 +37,10 @@ class GradientDescent:
         Retourne :
         - Le point optimal trouvé par l'algorithme.
         """
-        
-        return None # à compléter
+        for _ in range(self.max_iterations):
+            gradient_value = self.gradient(initial_point)
+            initial_point = self.update(initial_point, gradient_value)
+        return initial_point
 
     def update(self, point, gradient_value):
         
@@ -52,7 +54,8 @@ class GradientDescent:
         Retourne :
         - Le nouveau point après la mise à jour.
         """
-        
-        return None # à compléter
+        # ak+1 = ak −δk∇(E)(ak)
+        new_point = point - self.learning_rate * gradient_value 
+        return new_point
 
 

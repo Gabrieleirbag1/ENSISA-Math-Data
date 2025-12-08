@@ -48,7 +48,19 @@ ex6_a = GradientDescent(gradient_f_ex6, 0.05, 1000)
 print("a) :", ex6_a.descent(-1))
 
 ### EXERCICE 7 
+print("\nExercice 7")
 
+def f_ex7(x, y):
+    return x ** 2 + 3 * y ** 2
+
+def gradient_f_ex7(point: tuple[float, float]) -> tuple[float, float]:
+    x, y = point
+    dfdx = 2 * x
+    dfdy = 6 * y
+    return (dfdx, dfdy)
+
+ex7_a = GradientDescent(gradient_f_ex7, 0.1, 100)
+print("a) :", ex7_a.descent((1, 1)))
 
 ### EXERCICE 8
 

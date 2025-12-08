@@ -8,10 +8,10 @@ Created on Mon Jan  8 16:45:29 2024
 """
 Création de la classe GradientDescent utilisée durant l'intégralité de ce cours
 """
-
+import numpy as np
 class GradientDescent:
     
-    def __init__(self, gradient, learning_rate = 0.01, max_iterations = 1000):
+    def __init__(self, gradient, learning_rate = 0.01, max_iterations = 1000, error_rate = 0.01):
         
         """
         Initialise l'objet GradientDescent avec les paramètres nécessaires.
@@ -25,6 +25,8 @@ class GradientDescent:
         self.gradient = gradient
         self.learning_rate = learning_rate
         self.max_iterations = max_iterations
+        self.error_rate = error_rate
+        self.num_iterations = 0
 
     def descent(self, initial_point: float | tuple[float, float]) -> float | tuple[float, float]:
         
@@ -39,7 +41,10 @@ class GradientDescent:
         """
         for _ in range(self.max_iterations):
             gradient_value = self.gradient(initial_point)
+            if np.linalg.norm(gradient_value) < self.error_rate:
+                break
             initial_point = self.update(initial_point, gradient_value)
+            self.num_iterations += 1
         return initial_point
 
     def update(self, point, gradient_value):

@@ -59,8 +59,18 @@ def gradient_f_ex7(point: tuple[float, float]) -> tuple[float, float]:
     dfdy = 6 * y
     return (dfdx, dfdy)
 
-ex7_a = GradientDescent(gradient_f_ex7, 0.1, 100)
+ex7_a = GradientDescent(gradient_f_ex7, 0.1, 100, 0.01)
 print("a) :", ex7_a.descent((1, 1)))
+print("Nombre d'itérations :", ex7_a.num_iterations)
+
+
+ex7_b = GradientDescent(gradient_f_ex7, 0.1, 100, 0.01)
+print("b) :", ex7_b.descent((-1, -1)))
+print("Nombre d'itérations :", ex7_b.num_iterations)
+
+ex7_c = GradientDescent(gradient_f_ex7, 0.1, 100, 0.01)
+print("a) :", ex7_a.descent((2, 1)))
+print("Nombre d'itérations :", ex7_c.num_iterations)
 
 ### EXERCICE 8
 

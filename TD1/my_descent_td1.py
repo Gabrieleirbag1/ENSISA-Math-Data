@@ -26,7 +26,7 @@ class GradientDescent:
         self.learning_rate = learning_rate
         self.max_iterations = max_iterations
 
-    def descent(self, initial_point):
+    def descent(self, initial_point: float | tuple[float, float]) -> float | tuple[float, float]:
         
         """
         Effectue l'algorithme de descente de gradient.
@@ -55,7 +55,14 @@ class GradientDescent:
         - Le nouveau point après la mise à jour.
         """
         # ak+1 = ak −δk∇(E)(ak)
-        new_point = point - self.learning_rate * gradient_value 
+        if isinstance(point, tuple):
+            point_x, point_y = point
+            gradient_x, gradient_y = gradient_value
+            new_point_x = point_x - self.learning_rate * gradient_x
+            new_point_y = point_y - self.learning_rate * gradient_y
+            new_point = (new_point_x, new_point_y)
+        else:
+            new_point = point - self.learning_rate * gradient_value 
         return new_point
 
 

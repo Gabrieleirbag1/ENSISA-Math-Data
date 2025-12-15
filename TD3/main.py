@@ -12,6 +12,8 @@ with open(os.path.join(os.path.dirname(__file__), "data.csv"), 'r') as file:
     x = np.array(data[0])
     y = np.array(data[1])
 
+############### EXERCICE 2 ##############
+
 plt.scatter(x, y, color='blue', label='Données')
 
 poly = PolynomialFeatures(degree=4, include_bias=False)
@@ -35,3 +37,25 @@ plt.show()
 print("Coefficients du modèle polynomial :", model.coef_)
 print("Intercept :", model.intercept_)
 print("Erreur quadratique moyenne (MSE) :", mean_squared_error(y, model.predict(x_poly)))
+
+############### EXERCICE 3 ##############
+
+housing = fetch_california_housing()
+X, y = housing.data, housing.target
+
+# Q2a
+reg = LinearRegression().fit(X, y)
+print("intercept :", reg.intercept_)
+print("coefficients :", reg.coef_)
+
+# Q2b
+prediction = reg.predict(X)
+print("prediction groupe 1:", prediction[0])
+print("valeur réelle groupe 1:", y[0])
+
+# Q2c
+diff = np.abs(y - prediction)
+group_num = np.argmin(diff)
+print('Numéro du groupe:', group_num)
+print('Prédiction du modèle pour ce groupe:', prediction[group_num - 1])
+print('Valeur réelle du groupe:', y[group_num - 1])

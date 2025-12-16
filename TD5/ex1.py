@@ -28,7 +28,6 @@ x_normalized = scaler.fit_transform(x_reshaped)
 model = LogisticRegression()
 model.fit(x_normalized, y)
 error = log_loss(y, model.predict_proba(x_normalized))
-plt.scatter(x, y, color='blue', label='Données', alpha=0.5)
 
 x_range = np.linspace(x.min(), x.max(), 300).reshape(-1, 1)
 x_range_normalized = scaler.transform(x_range)
@@ -44,6 +43,7 @@ x0_scaled = -model.intercept_[0] / model.coef_[0][0]
 x0 = scaler.inverse_transform([[x0_scaled]])[0][0]
 print(f"Frontière de décision (p=0.5) à x = {x0}")
 
+plt.scatter(x, y, color='blue', label='Données', alpha=0.5)
 plt.plot(x_range, y_prob, color='red', label='Probabilité de survie (degré 4)', linewidth=2)
 plt.axvline(x=x0, color='green', linestyle='--', label='Frontière de décision (p=0.5)')
 plt.xlabel('Âge')

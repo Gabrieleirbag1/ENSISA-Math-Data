@@ -39,13 +39,13 @@ print(f"Coefficient a: {model.coef_}")
 print(f"Biais b: {model.intercept_}")
 print(f"Fonction d'erreur (log loss): {error}")
 
-plt.plot(x_range, y_prob, color='red', label='Probabilité de survie (degré 4)', linewidth=2)
 
 x0_scaled = -model.intercept_[0] / model.coef_[0][0]
 x0 = scaler.inverse_transform([[x0_scaled]])[0][0]
 print(f"Frontière de décision (p=0.5) à x = {x0}")
-plt.axvline(x=x0, color='green', linestyle='--', label='Frontière de décision (p=0.5)')
 
+plt.plot(x_range, y_prob, color='red', label='Probabilité de survie (degré 4)', linewidth=2)
+plt.axvline(x=x0, color='green', linestyle='--', label='Frontière de décision (p=0.5)')
 plt.xlabel('Âge')
 plt.ylabel('Survie / Probabilité')
 plt.title('Régression logistique - Survie sur le Titanic')

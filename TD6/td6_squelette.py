@@ -41,7 +41,7 @@ param = [poids,biais]
 modele.layers[1].set_weights(param)
 
 # Affichage
-X = np.linspace(0, 2, 100).reshape(-1, 1)
+X = np.linspace(0, 2, 1000).reshape(-1, 1)
 Y_pred = modele.predict(X)
 plt.plot(X, Y_pred, color='red', label='Sortie du réseau')
 plt.xlabel('x')

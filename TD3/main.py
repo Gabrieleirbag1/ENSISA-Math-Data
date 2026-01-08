@@ -5,6 +5,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import mean_squared_error
 from sklearn.datasets import fetch_california_housing
+from sklearn.preprocessing import StandardScaler
 
 with open(os.path.join(os.path.dirname(__file__), "data.csv"), 'r') as file:
     data = file.readlines()
@@ -42,6 +43,10 @@ print("Erreur quadratique moyenne (MSE) :", mean_squared_error(y, model.predict(
 
 housing = fetch_california_housing()
 X, y = housing.data, housing.target
+
+# standardisation des données
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
 
 # Q2a
 reg = LinearRegression().fit(X, y)

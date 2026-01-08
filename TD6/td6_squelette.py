@@ -14,6 +14,8 @@ from sklearn.preprocessing import StandardScaler
 from keras.models import Sequential
 from keras.layers import Dense
 
+
+
 from descente_stochastique import GradientDescent
 
 
@@ -23,23 +25,23 @@ from descente_stochastique import GradientDescent
 modele = Sequential()
 
 # Couches de neurones
-modele.add(Dense(None, input_dim=None, activation = None)) # 1ère couche à compléter
-modele.add(Dense(None, activation = None)) # 2ème couche à compléter
+modele.add(Dense(2, input_dim=1, activation = 'relu')) # 1ère couche à compléter
+modele.add(Dense(1, activation = 'linear')) # 2ème couche à compléter
 
 # Couche 0
-poids = np.array([[None, None]]) # poids de la 1ère couche à compléter
-biais = np.array([None, None]) # biais de la 1ère couche à compléter
+poids = np.array([[-3, 1]]) # poids de la 1ère couche à compléter
+biais = np.array([3, -1]) # biais de la 1ère couche à compléter
 param = [poids,biais]
 modele.layers[0].set_weights(param)
 
 # Couche 1
-poids = np.array([[None], [None]])  # poids de la 2ème couche à compléter
-biais = np.array([None])  # biais de la 2ème couche à compléter
+poids = np.array([[1], [1]])  # poids de la 2ème couche à compléter
+biais = np.array([0])  # biais de la 2ème couche à compléter
 param = [poids,biais]
 modele.layers[1].set_weights(param)
 
 # Affichage
-X = None # entrée du réseau à compléter
+X = np.linspace(-2, 4, 100).reshape(-1, 1)
 Y_pred = modele.predict(X)
 plt.plot(X, Y_pred, color='red', label='Sortie du réseau')
 plt.xlabel('x')

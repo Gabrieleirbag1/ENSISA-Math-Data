@@ -21,9 +21,9 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 
 # Use tensorflow.keras to avoid conflicts with a separate keras package
-from tensorflow.keras.utils import get_custom_objects
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from keras.utils import get_custom_objects
+from keras.models import Sequential
+from keras.layers import Dense
 
 from sklearn.linear_model import LinearRegression, Lasso
 from sklearn.preprocessing import StandardScaler

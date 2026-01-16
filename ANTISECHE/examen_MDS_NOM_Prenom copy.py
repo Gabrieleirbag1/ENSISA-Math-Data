@@ -28,7 +28,7 @@ modele = Sequential()
 
 # Couches de neurones
 # ATTENTION: La fonction est passée directement, SANS guillemets
-modele.add(Dense(2, input_dim=2, activation = heaviside))
+modele.add(Dense(2, input_dim=2, activation = heaviside)) # le premier argument est le nombre de neurones et le second le nombre d'entrées
 modele.add(Dense(1, activation = heaviside)) 
 
 # Couche 1
